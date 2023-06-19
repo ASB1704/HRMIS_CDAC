@@ -71,10 +71,9 @@ export const submitSelfAppraisel = async (req, res) => {
 };
 
 export const submitAparForm = async (req, res) => {
-  const { empId } = req.body;
-  console.log(empId);
+  const { empId} = req.body;
+ 
 
-  // console.log(empId);
   try {
     const user_ = await User.findOneAndUpdate(
       { empId: empId },
@@ -82,7 +81,7 @@ export const submitAparForm = async (req, res) => {
       { $set: { APAR_status: true, ...req.body } },
       { new: true }
     );
-    // console.log({ user_ });
+  
     if (user_) {
 
       // Object.keys(newData).forEach(key => {
@@ -103,22 +102,5 @@ export const submitAparForm = async (req, res) => {
   }
 };
 
-export const checkAPAR = async (req, res) => {
-  console.log(req.body, "Hello");
-  res.send("send")
-  // try {
-  //     const user_ = await User.find(
-  //     { empId: empId },
-  //  );
-  //   console.log({ user_ });
-  //   if (user_) {
-  //     res.send({ msg: "successfully registered" });
-  //   } else {
-  //     res.status(404).send({ msg: "User not found" });
-  //   }
-  // } catch (error) {
-  //   console.error(error);
-  //   res.status(500).send("An error occurred");
-  // }
-};
+
 

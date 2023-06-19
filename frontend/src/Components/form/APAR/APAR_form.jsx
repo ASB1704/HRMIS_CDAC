@@ -12,23 +12,23 @@ function APAR_form() {
   console.log(isSubmitted);
 
 
-  // const { user, setuser } = useGlobalContext();
-  const [user, setuser] = useState({
-    appraiselPeriodFrom: "",
-    appraiselPeriodTo: "",
-    userName: "",
-    empId: "",
-    dateOBirth: "",
-    designation: "",
-    presentpay: "",
-    dateOfEntryInCdac: "",
-    absenceOtherThanLeave: "",
-    leaveAvailed: "",
-    dateOfFillingAparForm: "",
-    group: "",
-    APAR_status: false
-  })
-  const { alluser, setalluser } = useGlobalContext();
+    // const { user, setuser } = useGlobalContext();
+    const [user,setuser] = useState({
+        appraiselPeriodFrom : "",
+        appraiselPeriodTo : "",
+        userName:"",
+        empId:"",
+        dateOBirth:"",
+        designation : "",
+        presentpay : "",
+        dateOfEntryInCdac: "",
+        absenceOtherThanLeave: "",
+        leaveAvailed: "",
+        dateOfFillingAparForm: "",
+        group : "",
+        APAP_status : false
+    })
+  const {alluser, setalluser} =  useGlobalContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
