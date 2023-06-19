@@ -7,7 +7,7 @@ import { useGlobalContext } from "../../../StateContext";
 function APAR_form() {
   const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
-  const { curuser, setcuruser } = useGlobalContext();
+  const { setCurUser } = useGlobalContext();
   const { isSubmitted, setisSubmitted } = useGlobalContext();
   console.log(isSubmitted);
 
@@ -36,8 +36,8 @@ function APAR_form() {
 
     try {
       const { data } = await axios.post("http://localhost:5000/submitAparForm", user);
-      setcuruser(user);
-      console.log(isSubmitted);
+      setCurUser(user);
+      console.log(user);
       setisSubmitted(true);
       console.log(isSubmitted);
       navigate("/main2/HR");
