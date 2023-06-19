@@ -71,17 +71,19 @@ export const submitSelfAppraisel = async (req, res) => {
 };
 
 export const submitAparForm = async (req, res) => {
-  const { empId } = req.body;
-//   const { userName } = req.body;
+  const { empId,APAR_status } = req.body;
   console.log(empId);
+  APAR_status = true;
+
   try {
     const user_ = await User.findOneAndUpdate(
-      { empId : empId },
+      { empId: empId },
       req.body, // New data to updates
       { new: true }
     );
     console.log({ user_ });
     if (user_) {
+
       // Object.keys(newData).forEach(key => {
       //     if (user[key] !== undefined) {
       //         user[key] = newData[key];
@@ -91,8 +93,8 @@ export const submitAparForm = async (req, res) => {
       // const updatedData = await user.save();
       // console.log({updatedData});
       // res.json(updatedData);
-    res.send({msg : "successfully registered"})
-    
+      res.send({ msg: "successfully registered" })
+
     }
   } catch (error) {
     console.error(error);

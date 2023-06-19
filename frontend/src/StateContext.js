@@ -11,11 +11,11 @@ import React, { useState } from 'react'
 
 const AppContext = React.createContext();
 
-const AppProvider = ({children}) =>{
-    const [user, setuser] = useState({ })
-    const [curuser, setcuruser] = useState({ })
-    const getusers = async ()=>{
-        const {data} =  await axios.get("http://localhost:5000/getUsers")
+const AppProvider = ({ children }) => {
+    const [curUser, setCurUser] = useState({})
+    const [user, setuser] = useState({})
+    const getusers = async () => {
+        const { data } = await axios.get("http://localhost:5000/getUsers")
         setuser(data);
         console.log(data);
 
@@ -24,25 +24,25 @@ const AppProvider = ({children}) =>{
     const contextValue = {
         isSubmitted,
         setisSubmitted,
-      };
+    };
     const [alluser, setalluser] = useState([]);
     const [requserId, setReqUserId] = useState();
-    useEffect(()=>{
+    useEffect(() => {
         getusers();
-    },[])
-     return <AppContext.Provider value={{
+    }, [])
+    return <AppContext.Provider value={{
 
-        user, setuser, requserId, setReqUserId ,alluser,setalluser,isSubmitted,setisSubmitted,curuser,setcuruser,contextValue
-     }}>
-          {children}
-     </AppContext.Provider>
+        user, setuser, requserId, setReqUserId, alluser, setalluser, isSubmitted, setisSubmitted, curUser, setCurUser, contextValue
+    }}>
+        {children}
+    </AppContext.Provider>
 }
 
-const useGlobalContext = () =>{
-     return useContext(AppContext)
+const useGlobalContext = () => {
+    return useContext(AppContext)
 }
 
-export {AppContext,AppProvider, useGlobalContext}
+export { AppContext, AppProvider, useGlobalContext }
 
 
 

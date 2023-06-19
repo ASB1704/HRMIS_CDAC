@@ -8,12 +8,13 @@ import { useGlobalContext } from '../../StateContext';
 
 export const HR = () => {
   const navigate = useNavigate();
-  const { user,setuser } = useGlobalContext();
-  const {isSubmitted,setisSubmitted} = useGlobalContext();
+  const { user } = useGlobalContext();
+  const { isSubmitted, setisSubmitted } = useGlobalContext();
   console.log(isSubmitted);
   // const [show, setShow] = useState([]);
-  const {alluser, setalluser} = useGlobalContext();
-  const btnhandler = ()=>{
+  const { alluser, setalluser, curUser } = useGlobalContext();
+
+  const btnhandler = () => {
     navigate('/form/APAR')
   }
   useEffect(() => {
@@ -26,20 +27,17 @@ export const HR = () => {
     axios
       .get("http://localhost:5000/getUsers")
       .then(({ data }) => {
-        console.log(data);
+        console.log(data.user);
         setalluser(data);
       })
   }, [])
-  const fillForrm = () => {
-    navigate("/form/APAR");
-  }
-   
+
   return (
- 
+
     <div className='notes-wrapper'>
-       <div className="container">
+      <div className="container">
         <div className="card">
-          <h2>Welcome</h2>
+          <h2>Welcome {curUser.email}</h2>
           {/* <p>You have 50 employees in your company.</p> */}
           <div className="action">
             <button onClick={btnhandler}>APAR</button>
@@ -57,7 +55,7 @@ export const HR = () => {
             </>
           )}
         </div> */}
-      </div>  
+      </div>
     </div>
   )
 }

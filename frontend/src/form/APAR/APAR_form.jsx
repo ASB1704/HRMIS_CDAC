@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './APAR_form.css'
 
-
-
 function APAR_Form() {
     //creating an object where all the input values will be saved 
     const data = { from: "", upto: "", name: "", emp_id: "", dob: "", designation: "", pay: "", grp: "", entrydate: "", date: "", leave: "", otherleave: "" };
@@ -51,7 +49,6 @@ function APAR_Form() {
                         </div>
                         <div className='upto'><input type='text'placeholder='TO : DD / MM / YYYY'
                             name="upto" value={inputData.upto} onChange={handleData} className="inp"></input>
-
                         </div>
                     </div>
                 </div>

@@ -11,13 +11,14 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
-
+import { useGlobalContext } from '../../StateContext';
 
 const theme = createTheme();
 
 export default function SignIn() {
 
-   const navigate = useNavigate();
+  const navigate = useNavigate();
+  const { setCurUser } = useGlobalContext();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -27,28 +28,29 @@ export default function SignIn() {
       password: Data.get('password'),
     };
     const myurl = "http://localhost:5000/login";
-  
+
     try {
-      const {data} = await axios.post(myurl,userData)
+      const { data } = await axios.post(myurl, userData)
       console.log(data);
+      setCurUser(data.user);
       const code = data.status;
-      if(code === 400) alert("All inputs are required");
-      else if(code === 401) alert("Invalid Credientials");
-      else if(code === 200 & data.user.email === "emp@gmail.com") {
-    
+      if (code === 400) alert("All inputs are required");
+      else if (code === 401) alert("Invalid Credientials");
+      else if (code === 200 & data.user.email === "emp@gmail.com") {
+
         navigate('/main/employee')
       }
-      else if(code === 200 & data.user.email === "hr@gmail.com") {
-      
+      else if (code === 200 & data.user.email === "hr@gmail.com") {
+
         navigate('/main2/HR')
       }
-      else if(code === 200 & data.user.email === "rpo@gmail.com") {
-      
+      else if (code === 200 & data.user.email === "rpo@gmail.com") {
+
         navigate('/main3/RPO')
       }
-   
+
     } catch (error) {
-      
+
       alert(error.message)
     }
   };

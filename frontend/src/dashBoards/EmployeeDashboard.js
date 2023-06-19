@@ -41,7 +41,8 @@ const EmployeeDashboard = () => {
           <div className="action">
             {/* <button onClick={generate}>{user.request ? <h4>Request already send to hr</h4> : <h4>Send Request to HR</h4>}</button> */}
             <button onClick={generate}>
-              {!user.request && !user.filledByHr ? <h4>Send Request to HR</h4> : (user.request && !user.filledByHr ? <h4>Request already send to hr</h4> : <h4>Form has been filled by hr</h4>)}
+              {/* {!user.request && !user.filledByHr ? <h4>Send Request to HR</h4> : (user.request && !user.filledByHr ? <h4>Request already send to hr</h4> : <h4>Form has been filled by hr</h4>)} */}
+              {user.}
             </button>
             <br />
             <div className="action">

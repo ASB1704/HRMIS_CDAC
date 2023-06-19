@@ -7,46 +7,47 @@ import { useGlobalContext } from "../../../StateContext";
 function APAR_form() {
   const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
-  const {curuser,setcuruser} = useGlobalContext();
-  const {isSubmitted,setisSubmitted} = useGlobalContext();
+  const { curuser, setcuruser } = useGlobalContext();
+  const { isSubmitted, setisSubmitted } = useGlobalContext();
   console.log(isSubmitted);
 
 
-    // const { user, setuser } = useGlobalContext();
-    const [user,setuser] = useState({
-        appraiselPeriodFrom : "",
-        appraiselPeriodTo : "",
-        userName:"",
-        empId:"",
-        dateOBirth:"",
-        designation : "",
-        presentpay : "",
-        dateOfEntryInCdac: "",
-        absenceOtherThanLeave: "",
-        leaveAvailed: "",
-        dateOfFillingAparForm: "",
-        group : ""
-    })
-  const {alluser, setalluser} =  useGlobalContext();
+  // const { user, setuser } = useGlobalContext();
+  const [user, setuser] = useState({
+    appraiselPeriodFrom: "",
+    appraiselPeriodTo: "",
+    userName: "",
+    empId: "",
+    dateOBirth: "",
+    designation: "",
+    presentpay: "",
+    dateOfEntryInCdac: "",
+    absenceOtherThanLeave: "",
+    leaveAvailed: "",
+    dateOfFillingAparForm: "",
+    group: "",
+    APAR_status: false
+  })
+  const { alluser, setalluser } = useGlobalContext();
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  console.log({ user });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log({ user });
 
-  try {
-    const { data } = await axios.post("http://localhost:5000/submitAparForm", user);
-    setcuruser(user);
-    console.log(isSubmitted);
-    setisSubmitted(true);
-    console.log(isSubmitted);
-    navigate("/main2/HR");
-  } catch (error) {
-    console.error('Error sending request:', error);
-  }
-};
-useEffect(() => {
-  console.log("isSubmitted changed:", isSubmitted);
-}, [isSubmitted]);
+    try {
+      const { data } = await axios.post("http://localhost:5000/submitAparForm", user);
+      setcuruser(user);
+      console.log(isSubmitted);
+      setisSubmitted(true);
+      console.log(isSubmitted);
+      navigate("/main2/HR");
+    } catch (error) {
+      console.error('Error sending request:', error);
+    }
+  };
+  useEffect(() => {
+    console.log("isSubmitted changed:", isSubmitted);
+  }, [isSubmitted]);
 
   return (
     <>
@@ -66,7 +67,7 @@ useEffect(() => {
                 placeholder="FROM : DD / MM / YYYY"
                 name="Aparfrom"
                 value={user.appraiselPeriodFrom}
-                onChange={(e)=>setuser({...user,appraiselPeriodFrom : e.target.value})}
+                onChange={(e) => setuser({ ...user, appraiselPeriodFrom: e.target.value })}
                 disabled={!isEditing}
                 className="inpt"
               ></input>
@@ -77,7 +78,7 @@ useEffect(() => {
                 placeholder="TO : DD / MM / YYYY"
                 name="Aparupto"
                 value={user.appraiselPeriodTo}
-                onChange={(e)=>setuser({...user,appraiselPeriodTo: e.target.value})}
+                onChange={(e) => setuser({ ...user, appraiselPeriodTo: e.target.value })}
                 disabled={!isEditing}
                 className="inpt"
               ></input>
@@ -91,8 +92,8 @@ useEffect(() => {
               type="text"
               placeholder="Name"
               name="username"
-                value={user.userName}
-              onChange={(e)=>setuser({...user,userName : e.target.value})}
+              value={user.userName}
+              onChange={(e) => setuser({ ...user, userName: e.target.value })}
               className="inpt"
               disabled={!isEditing}
             ></input>
@@ -103,8 +104,8 @@ useEffect(() => {
               type="text"
               placeholder="Employee Id"
               name="EmployeeID"
-                value={user.empId}
-              onChange={(e)=>setuser({...user,empId : e.target.value})}
+              value={user.empId}
+              onChange={(e) => setuser({ ...user, empId: e.target.value })}
               className="inpt"
               disabled={!isEditing}
             ></input>
@@ -116,8 +117,8 @@ useEffect(() => {
               type="date"
               placeholder="Date of birth"
               name="dob"
-                value={user.dateOBirth}
-              onChange={(e)=>setuser({...user,dateOBirth : e.target.value})}
+              value={user.dateOBirth}
+              onChange={(e) => setuser({ ...user, dateOBirth: e.target.value })}
               className="inpt"
               disabled={!isEditing}
             ></input>
@@ -129,8 +130,8 @@ useEffect(() => {
               type="text"
               placeholder="Designation"
               name="designation"
-                value={user.designation}
-              onChange={(e)=>setuser({...user,designation : e.target.value})}
+              value={user.designation}
+              onChange={(e) => setuser({ ...user, designation: e.target.value })}
               className="inpt"
               disabled={!isEditing}
             ></input>
@@ -142,8 +143,8 @@ useEffect(() => {
               type="text"
               placeholder="Present Pay"
               name="pay"
-                value={user.presentpay}
-              onChange={(e)=>setuser({...user,presentpay : e.target.value})}
+              value={user.presentpay}
+              onChange={(e) => setuser({ ...user, presentpay: e.target.value })}
               className="inpt"
               disabled={!isEditing}
             ></input>
@@ -154,8 +155,8 @@ useEffect(() => {
               type="text"
               placeholder="Section/Group"
               name="grp"
-                value={user.group}
-              onChange={(e)=>setuser({...user,group : e.target.value})}
+              value={user.group}
+              onChange={(e) => setuser({ ...user, group: e.target.value })}
               className="inpt"
               disabled={!isEditing}
             ></input>
@@ -166,8 +167,8 @@ useEffect(() => {
               type="date"
               placeholder=" DD / MM / YYYY"
               name="entrydate"
-                value={user.dateOfEntryInCdac}
-              onChange={(e)=>setuser({...user,dateOfEntryInCdac: e.target.value})}
+              value={user.dateOfEntryInCdac}
+              onChange={(e) => setuser({ ...user, dateOfEntryInCdac: e.target.value })}
               className="inpt"
               disabled={!isEditing}
             ></input>
@@ -178,8 +179,8 @@ useEffect(() => {
               type="date"
               placeholder="Date of entry to the current designation"
               name="Apardate"
-                value={user.dateOfFillingAparForm}
-              onChange={(e)=>setuser({...user,dateOfFillingAparForm: e.target.value})}
+              value={user.dateOfFillingAparForm}
+              onChange={(e) => setuser({ ...user, dateOfFillingAparForm: e.target.value })}
               className="inpt"
               disabled={!isEditing}
             ></input>
@@ -190,8 +191,8 @@ useEffect(() => {
               type="text"
               placeholder="Leave availed"
               name="leave"
-                value={user.leaveAvailed}
-              onChange={(e)=>setuser({...user,leaveAvailed: e.target.value})}
+              value={user.leaveAvailed}
+              onChange={(e) => setuser({ ...user, leaveAvailed: e.target.value })}
               className="inpt"
               disabled={!isEditing}
             ></input>
@@ -202,26 +203,26 @@ useEffect(() => {
               type="text"
               placeholder="Absence from duty other then leave"
               name="otherleave"
-                value={user.absenceOtherThanLeave}
-              onChange={(e)=>setuser({...user,absenceOtherThanLeave: e.target.value})}
+              value={user.absenceOtherThanLeave}
+              onChange={(e) => setuser({ ...user, absenceOtherThanLeave: e.target.value })}
               className="inpt"
               disabled={!isEditing}
             ></input>
           </div>
         </div>
         <div className="btn_class">
-          {isEditing? <button onClick={()=>setIsEditing(!isEditing)} type="submit" className="submitbtn_apar">
+          {isEditing ? <button onClick={() => setIsEditing(!isEditing)} type="submit" className="submitbtn_apar">
             submit
-          </button>: <div className="Edit_lock">
-          <button onClick={()=>setIsEditing(!isEditing)} type="submit" className="submitbtn_apar">
-            Edit
-          </button>
-          <button type="submit" className="submitbtn_apar" onClick={handleSubmit}>
-            Lock & Submit
-          </button>
+          </button> : <div className="Edit_lock">
+            <button onClick={() => setIsEditing(!isEditing)} type="submit" className="submitbtn_apar">
+              Edit
+            </button>
+            <button type="submit" className="submitbtn_apar" onClick={handleSubmit}>
+              Lock & Submit
+            </button>
           </div>}
-         
-         
+
+
         </div>
       </form>
     </>

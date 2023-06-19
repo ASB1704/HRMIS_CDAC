@@ -15,7 +15,7 @@ const HrDashboard = () => {
         console.log('data ---> ', data);
         setEmpReq(data);
       })
-  }, [])
+  })
   const fillForrm = (index) => {
     setReqUserId(index);
     // console.log({ index });
