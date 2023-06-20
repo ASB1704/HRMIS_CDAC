@@ -7,31 +7,29 @@ import { Main2 } from "./Components/main2/Main2";
 import { Main3 } from "./Components/main3/Main3";
 import { Employee } from "./Components/main/Employee";
 import { HR } from "./Components/main2/HR";
-import Analytics from './Components/main2/Analytics';
 import { RPO } from "./Components/main3/RPO";
-import APAR_form from './Components/form/APAR/APAR_form';
-import SelfAppraisalForm from './Components/form/SelfAppraisal/SelfAppraisalForm'
-import LandingPage from './Components/LandingPage/LandingPage'
-import { Reporting } from './Components/main/Reporting';
-import { EmployeeSection } from './Components/main/EmployeeSection';
+import Analytics from './Components/main2/Analytics';
+import APAR_form from "./Components/form/APAR/APAR_form";
+import SelfAppraisalForm from "./Components/form/SelfAppraisal/SelfAppraisalForm";
+import LandingPage from "./Components/LandingPage/LandingPage";
+import { Reporting } from "./Components/main/Reporting";
+import { EmployeeSection } from "./Components/main/EmployeeSection";
 
 function App() {
-
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/EmployeeSection" element={<EmployeeSection />} />
-          <Route path="/Reporting" element={<Reporting />} />
-
           <Route path="/" element={<Navigate replace to="/LandingPage" />} />
           <Route path="/Login" element={<Login />} />
           <Route path="main" element={<Main />}>
+            <Route path="EmployeeSection" element={<EmployeeSection />} />
+            <Route path="Reporting" element={<Reporting />} />
             <Route path="employee" element={<Employee />} />
-          </Route>s
+          </Route>
           <Route path="main2" element={<Main2 />}>
             <Route path="HR" element={<HR />} />
-            <Route path="analytics" element={<Analytics />} />
+            <Route path="Analytics" element={<Analytics />} />
           </Route>
 
           <Route path="main3" element={<Main3 />}>

@@ -18,7 +18,7 @@ export const SideBar2 = () => {
         <i><SiFormstack /></i>
         <span>Forms</span>
       </Link>
-      <Link className={`sidebar-item ${active === 'Analytics' ? 'active' : ''}`} onClick={() => setActive('Analytics')} to='analytics'>
+      <Link className={`sidebar-item ${active === 'Analytics' ? 'active' : ''}`} onClick={() => setActive('Analytics')} to='Analytics'>
         <i> <FaChartLine /> </i>
         <span>Analytics</span>
       </Link>
