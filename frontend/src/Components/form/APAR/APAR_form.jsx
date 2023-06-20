@@ -7,28 +7,28 @@ import { useGlobalContext } from "../../../StateContext";
 function APAR_form() {
   const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
-  const { setCurUser } = useGlobalContext();
+  const { setcuruser } = useGlobalContext();
   const { isSubmitted, setisSubmitted } = useGlobalContext();
   console.log(isSubmitted);
 
 
-    // const { user, setuser } = useGlobalContext();
-    const [user,setuser] = useState({
-        appraiselPeriodFrom : "",
-        appraiselPeriodTo : "",
-        userName:"",
-        empId:"",
-        dateOBirth:"",
-        designation : "",
-        presentpay : "",
-        dateOfEntryInCdac: "",
-        absenceOtherThanLeave: "",
-        leaveAvailed: "",
-        dateOfFillingAparForm: "",
-        group : "",
-        APAP_status : false
-    })
-  const {alluser, setalluser} =  useGlobalContext();
+  // const { user, setuser } = useGlobalContext();
+  const [user, setuser] = useState({
+    appraiselPeriodFrom: "",
+    appraiselPeriodTo: "",
+    userName: "",
+    empId: "",
+    dateOBirth: "",
+    designation: "",
+    presentpay: "",
+    dateOfEntryInCdac: "",
+    absenceOtherThanLeave: "",
+    leaveAvailed: "",
+    dateOfFillingAparForm: "",
+    group: "",
+    APAP_status: false
+  })
+  const { alluser, setalluser } = useGlobalContext();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,8 +36,8 @@ function APAR_form() {
 
     try {
       const { data } = await axios.post("http://localhost:5000/submitAparForm", user);
-      setCurUser(user);
-      console.log(user);
+      setcuruser(data.user);
+      console.log(isSubmitted);
       setisSubmitted(true);
       console.log(isSubmitted);
       navigate("/main2/HR");
@@ -45,9 +45,9 @@ function APAR_form() {
       console.error('Error sending request:', error);
     }
   };
-  useEffect(() => {
-    console.log("isSubmitted changed:", isSubmitted);
-  }, [isSubmitted]);
+  // useEffect(() => {
+  //   console.log("isSubmitted changed:", isSubmitted);
+  // }, [isSubmitted]);
 
   return (
     <>

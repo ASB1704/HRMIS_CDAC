@@ -33,7 +33,7 @@ export default function SignIn() {
 
     try {
       const { data } = await axios.post(myurl, userData)
-      console.log(data);
+      // console.log(data);
       setcuruser(data.user);
       const code = data.status;
       if(code === 400) alert("All inputs are required");

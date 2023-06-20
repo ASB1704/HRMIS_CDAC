@@ -21,6 +21,10 @@ const userSchema = new mongoose.Schema({
     APAR_status: Boolean,
     SelfAppraisal_status : Boolean,
     Evalutation_status : Boolean,
+    Role:{
+        HR:Boolean,
+        Reporting_Officer:Boolean
+    },
     selfAppFormData1: [
       {
         jobAssigned: String,
@@ -38,15 +42,15 @@ const userSchema = new mongoose.Schema({
     dateOfFillingSelfAppraisalForm: Date,
     dateOfFillingEvaluationForm: Date,
     scoreOfEvaluation: {
-      sc1: String,
-      sc2: String,
-      sc3: String,
-      sc4: String,
-      sc5: String,
-      sc6: String,
-      selfAppraisalScore: String,
-      achievementBeyondScore: String,
-      totalScore: String
+      sc1: Number,
+      sc2: Number,
+      sc3: Number,
+      sc4: Number,
+      sc5: Number,
+      sc6: Number,
+      selfAppraisalScore: Number,
+      achievementBeyondScore: Number,
+      totalScore: Number
     },
     additionalComments: String
 });

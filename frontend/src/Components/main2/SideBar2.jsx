@@ -6,15 +6,15 @@ import { FaChartLine } from 'react-icons/fa';
 import '../../css/side-bar.css'
 
 export const SideBar2 = () => {
-  const [active, setActive] = useState('notes')
+  const [active, setActive] = useState('dashboard')
 
   return (
     <aside className='side-bar'>
-      <Link className={`sidebar-item ${active === 'notes' ? 'active' : ''}`} onClick={() => setActive('notes')} to='notes'>
+      <Link className={`sidebar-item ${active === 'Dashboard' ? 'active' : ''}`} onClick={() => setActive('Dashboard')} to=''>
         <i><FaUserAlt /></i>
-        <span>Employee</span>
+        <span>Dashboard</span>
       </Link>
-      <Link className={`sidebar-item ${active === 'forms' ? 'active' : ''}`} onClick={() => setActive('forms')} to='forms'>
+      <Link className={`sidebar-item ${active === 'Forms' ? 'active' : ''}`} onClick={() => setActive('Forms')} to='forms'>
         <i><SiFormstack /></i>
         <span>Forms</span>
       </Link>

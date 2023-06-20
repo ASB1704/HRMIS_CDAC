@@ -11,11 +11,12 @@ import React, { useState } from 'react'
 
 const AppContext = React.createContext();
 
-const AppProvider = ({ children }) => {
-    const [curuser, setcuruser] = useState({})
-    const [user, setuser] = useState({})
-    const getusers = async () => {
-        const { data } = await axios.get("http://localhost:5000/getUsers")
+const AppProvider = ({children}) =>{
+    const [user, setuser] = useState({ })
+    var [curuser, setcuruser] = useState({ })
+    const [isReporting,setisReporting] = useState(false);
+    const getusers = async ()=>{
+        const {data} =  await axios.get("http://localhost:5000/getUsers")
         setuser(data);
         console.log(data);
 
