@@ -12,7 +12,7 @@ import React, { useState } from 'react'
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-    const [curUser, setCurUser] = useState({})
+    const [curuser, setcuruser] = useState({})
     const [user, setuser] = useState({})
     const getusers = async () => {
         const { data } = await axios.get("http://localhost:5000/getUsers")
@@ -32,7 +32,7 @@ const AppProvider = ({ children }) => {
     }, [])
     return <AppContext.Provider value={{
 
-        user, setuser, requserId, setReqUserId, alluser, setalluser, isSubmitted, setisSubmitted, curUser, setCurUser, contextValue
+        user, setuser, requserId, setReqUserId, alluser, setalluser, isSubmitted, setisSubmitted, curuser, setcuruser, contextValue
     }}>
         {children}
     </AppContext.Provider>

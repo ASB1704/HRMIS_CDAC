@@ -17,11 +17,10 @@ import { useGlobalContext } from '../../StateContext';
 const theme = createTheme();
 
 export default function SignIn() {
-  const {curuser,setcuruser} = useGlobalContext();
 
 
   const navigate = useNavigate();
-  const { setCurUser } = useGlobalContext();
+  const { setcuruser } = useGlobalContext();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -35,7 +34,7 @@ export default function SignIn() {
     try {
       const { data } = await axios.post(myurl, userData)
       console.log(data);
-      setCurUser(data.user);
+      setcuruser(data.user);
       const code = data.status;
       if(code === 400) alert("All inputs are required");
       else if(code === 401) alert("Invalid Credientials");

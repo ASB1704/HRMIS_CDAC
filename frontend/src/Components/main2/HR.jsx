@@ -12,7 +12,7 @@ export const HR = () => {
   const { isSubmitted, setisSubmitted } = useGlobalContext();
   console.log(isSubmitted);
   // const [show, setShow] = useState([]);
-  const { alluser, setalluser, curUser } = useGlobalContext();
+  const { alluser, setalluser, curuser } = useGlobalContext();
 
   const btnhandler = () => {
     navigate('/form/APAR')
@@ -37,7 +37,7 @@ export const HR = () => {
     <div className='notes-wrapper'>
       <div className="container">
         <div className="card">
-          <h2>Welcome {curUser.email}</h2>
+          <h2>Welcome {curuser.email}</h2>
           {/* <p>You have 50 employees in your company.</p> */}
           <div className="action">
             <button onClick={btnhandler}>APAR</button>
