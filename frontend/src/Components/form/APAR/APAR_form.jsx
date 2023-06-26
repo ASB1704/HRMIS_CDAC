@@ -143,10 +143,8 @@ function APAR_form() {
     }
 
     try {
-      const { data } = await axios.post(
-        "http://localhost:5000/submitAparForm",
-        user
-      );
+      const { data } = await axios.post("http://localhost:5000/submitAparForm", user);
+      const { data2 } = await axios.post("http://localhost:5000/send-email", user);
       setcuruser(data.user);
       navigate("/main2/HR");
     } catch (error) {

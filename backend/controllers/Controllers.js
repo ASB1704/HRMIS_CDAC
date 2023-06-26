@@ -1,15 +1,16 @@
 import User from "../models/user.js";
+import nodemailer from "nodemailer"
 
 export const Login = async (req, res) => {
   try {
     console.log("hello im here");
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    const allusers = await User.find({ });
+    const allusers = await User.find({});
 
     if (user) {
       if (password === user.password) {
-        res.send({ status: 200, message: "Login Successful", user , allusers});
+        res.send({ status: 200, message: "Login Successful", user, allusers });
       } else {
         res.send({ message: "Password didn't match" });
       }
@@ -111,3 +112,33 @@ export const submitEvalutaionForm = async (req, res) => {
     res.status(500).send("An error occurred");
   }
 };
+export const sendMail = ((req, res) => {
+  const { email, userName, appraiselPeriodTo } = req.body;
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'akashchauhan72520@gmail.com',
+      pass: 'mmdaudzbxrotscir',
+    },
+  });
+  // Define the email details
+  const mailOptions = {
+    from: 'akashchauhan72520@gmail.com',
+    to: "ankit20_ug@ee.nits.ac.in",
+    subject: 'Reminder! CdacHRMIS',
+    text: `Hi ${userName}!. 
+    This email was sent by CDAC-HRMIS team. 
+    Last date to fill your appraisel is ${appraiselPeriodTo} `,
+  };
+
+  // Send the email
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error('Error sending email:', error);
+      res.status(500).send('Error sending email');
+    } else {
+      console.log('Email sent successfully:', info.response);
+      res.send('Email sent successfully');
+    }
+  });
+});
