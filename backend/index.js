@@ -10,7 +10,7 @@ app.use(cors());
 const PORT = 5000;
 
 const URL =
-  "mongodb+srv://anurag174:yNfoQuFCK1wHqPGi@cluster0.pzqlvtr.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb://localhost:27017/PRDS";
 mongoose.connect(URL, () => {
   console.log("connected");
 });
