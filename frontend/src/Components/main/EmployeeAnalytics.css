@@ -62,9 +62,32 @@
     cursor: pointer;
 }
 
-.EAC-extra-details-row td {
-    background-color: #D6E3FD;
+.EAC-extra-details-row-td {
+    background-color: #F0F2F5;
     border: none;
     outline: none;
-    /* margin: 1rem auto; */
+    display: flex;
+    flex-direction: row;
+    padding: 2rem;
+}
+
+.EAC-extra-details-row-td-1 {
+    width: 50%;
+    float: left;
+}
+
+.EAC-extra-details-row-td-2 {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    float: right;
+}
+
+.EAC-extra-details-row-td-21 {
+    background-color: white;
+    border-radius: 1rem;
+    width: 90%;
+    height: auto;
 }
