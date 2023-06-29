@@ -1,6 +1,5 @@
 import User from "../models/user.js";
 import nodemailer from "nodemailer"
-import htmlTemplate from '.././EmailTemplate.js';
 
 export const Login = async (req, res) => {
   try {
@@ -114,7 +113,7 @@ export const submitEvalutaionForm = async (req, res) => {
   }
 };
 export const sendMail = ((req, res) => {
-  const { email, userName, appraiselPeriodTo, appraiselPeriodFrom, dateofSubmission, empId, dateOfBirth, designation, presentPay, dateOfEntryInCdac, absenceOtherThanLeave, leaveAvailed } = req.body;
+  const { email, userName, appraiselPeriodTo } = req.body;
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -122,27 +121,14 @@ export const sendMail = ((req, res) => {
       pass: 'mmdaudzbxrotscir',
     },
   });
-
-  const formattedTemplate = htmlTemplate
-    .replace('{userName}', userName)
-    .replace('{userName1}', userName)
-    .replace('{appraiselPeriodTo}', appraiselPeriodTo)
-    .replace('{appraiselPeriodFrom}', appraiselPeriodFrom)
-    .replace('{dateofSubmission}', dateofSubmission)
-    .replace('{empId}', empId)
-    .replace('{dateOfBirth}', dateOfBirth)
-    .replace('{designation}', designation)
-    .replace('{presentPay}', presentPay)
-    .replace('{dateOfEntryInCdac}', dateOfEntryInCdac)
-    .replace('{absenceOtherThanLeave}', absenceOtherThanLeave)
-    .replace('{leaveAvailed}', leaveAvailed);
-
   // Define the email details
   const mailOptions = {
-    from: '"PRDS Team CDAC"<akashchauhan72520@gmail.com>',
-    to: email,
-    subject: 'Reminder!',
-    html: formattedTemplate,
+    from: 'akashchauhan72520@gmail.com',
+    to: "ankit20_ug@ee.nits.ac.in",
+    subject: 'Reminder! CdacHRMIS',
+    text: `Hi ${userName}!. 
+    This email was sent by CDAC-HRMIS team. 
+    Last date to fill your appraisel is ${appraiselPeriodTo} `,
   };
 
   // Send the email
