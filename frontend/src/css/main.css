@@ -6,6 +6,7 @@
 }
 .main-app-hr .outlet {
   width: 100vw;
+  height: auto;
 }
 
 .main-app-emp {
