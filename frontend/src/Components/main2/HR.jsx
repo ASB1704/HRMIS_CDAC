@@ -9,9 +9,7 @@ import { MdPendingActions } from "react-icons/md";
 import { IoIosCloudDone } from "react-icons/io";
 import { FaUserEdit } from "react-icons/fa";
 import "../Loader/Loader1.css";
-import { BASE_URL } from '../Config.js';
-
-
+import { BASE_URL } from "../Config.js";
 
 export const HR = () => {
   const navigate = useNavigate();
@@ -19,51 +17,111 @@ export const HR = () => {
     useGlobalContext();
 
   const handle_APAR_issued = () => {
-    const APAR_issued = user?.filter(
-      (element) =>  element.quarter.length!==0 && element.Role.HR === false && element.quarter[element.quarter.length-1].APAR_status === true
-    );
+    const APAR_issued = user?.filter((element) => {
+      if (element.quarter.length !== 0) {
+        const appraiselPeriodTo = new Date(
+          element.quarter[element.quarter.length - 1].appraiselPeriodTo
+        );
+        const currentDate = new Date();
+
+        const yearDiff =
+          currentDate.getFullYear() - appraiselPeriodTo.getFullYear();
+        const monthDiff =
+          currentDate.getMonth() - appraiselPeriodTo.getMonth() + yearDiff * 12;
+
+        if (monthDiff < 4) {
+          return (
+            element.Role.HR === false &&
+            element.quarter[element.quarter.length - 1].APAR_status === true
+          );
+        } else {
+          console.log("The difference is greater than 4.");
+        }
+      }
+    });
     setfilteredarray(APAR_issued);
   };
 
   const handle_APAR_tobeIssued = () => {
     const APAR_not_initiated = user?.filter((element) => {
       if (element.quarter.length !== 0) {
-        const appraiselPeriodTo = element.quarter[element.quarter.length - 1].appraiselPeriodTo;
-        
-        const timeDiff = appraiselPeriodTo.getTime() - new Date().getTime();
-        
-        const monthsDiff = timeDiff / (1000 * 60 * 60 * 24 * 30.4375);
-        
-        if (Math.abs(monthsDiff - 4) < 0.01) {
-          return (
-            element.Role.HR === false 
-          );
+        const appraiselPeriodTo = new Date(
+          element.quarter[element.quarter.length - 1].appraiselPeriodTo
+        );
+        const currentDate = new Date();
+
+        const yearDiff =
+          currentDate.getFullYear() - appraiselPeriodTo.getFullYear();
+        const monthDiff =
+          currentDate.getMonth() - appraiselPeriodTo.getMonth() + yearDiff * 12;
+
+        if (monthDiff > 4) {
+          return element.Role.HR === false;
+        } else {
+          console.log("The difference is less than 4.");
         }
       }
-      
-      return false;
     });
-  
+
     setfilteredarray(APAR_not_initiated);
   };
-  
-  
+
   const handle_Self_Appraisal = () => {
-    const Self_Appraisal_filled = user?.filter(
-      (element) =>
-         element.Role.HR === false &&
-         element.quarter[element.quarter.length-1].APAR_status === true &&
-         element.quarter[element.quarter.length-1].SelfAppraisal_status === true
-    );
+    const Self_Appraisal_filled = user?.filter((element) => {
+      if (element.quarter.length !== 0) {
+        const appraiselPeriodTo = new Date(
+          element.quarter[element.quarter.length - 1].appraiselPeriodTo
+        );
+        const currentDate = new Date();
+
+        const yearDiff =
+          currentDate.getFullYear() - appraiselPeriodTo.getFullYear();
+        const monthDiff =
+          currentDate.getMonth() - appraiselPeriodTo.getMonth() + yearDiff * 12;
+
+        if (monthDiff < 4) {
+          return (
+            element.Role.HR === false &&
+            element.quarter[element.quarter.length - 1].APAR_status === true &&
+            element.quarter[element.quarter.length - 1].SelfAppraisal_status ===
+              true
+          );
+        } else {
+          console.log("The difference is greater than 4.");
+        }
+      }
+    });
     setfilteredarray(Self_Appraisal_filled);
   };
   const handle_Evaluation_completed = () => {
     const APAR_completed = user?.filter(
-      (element) =>
-        element.quarter.length !== 0  && element.Role.HR === false &&
-        element.APAR_status === true &&
-        element.SelfAppraisal_status === true &&
-        element.Evalutation_status === true
+      (element) =>{
+
+        if (element.quarter.length !== 0) {
+          const appraiselPeriodTo = new Date(
+            element.quarter[element.quarter.length - 1].appraiselPeriodTo
+          );
+          const currentDate = new Date();
+  
+          const yearDiff =
+            currentDate.getFullYear() - appraiselPeriodTo.getFullYear();
+          const monthDiff =
+            currentDate.getMonth() - appraiselPeriodTo.getMonth() + yearDiff * 12;
+  
+          if (monthDiff < 4) {
+            return (
+              element.Role.HR === false &&
+              element.quarter[element.quarter.length - 1].APAR_status === true &&
+              element.quarter[element.quarter.length - 1].SelfAppraisal_status === true &&
+              element.quarter[element.quarter.length - 1].Evalutation_status === true
+            );
+          } else {
+            console.log("The difference is greater than 4.");
+          }
+        }
+      }
+        
+       
     );
     setfilteredarray(APAR_completed);
   };
@@ -129,9 +187,7 @@ export const HR = () => {
             <div className="HrProfile_up_in_right">
               <div className="HrProfile_up_in_right1">
                 <div className="HrProfile_up_in_right_small">
-                  <div className="HrProfile_up_in_right_small_in1">
-                    Email
-                  </div>
+                  <div className="HrProfile_up_in_right_small_in1">Email</div>
                   <div className="HrProfile_up_in_right_small_in2">
                     {curuser.email}
                   </div>
