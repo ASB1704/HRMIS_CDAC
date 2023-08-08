@@ -23,7 +23,7 @@ export default function SignIn() {
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
-    setLoading(true)
+    setLoading(true);
     event.preventDefault();
     const Data = new FormData(event.currentTarget);
     const userData = {
@@ -31,26 +31,46 @@ export default function SignIn() {
       password: Data.get("password"),
     };
     const myurl = BASE_URL + "login";
-
+  
     try {
-      const { data } = await axios.post(myurl, userData);
-      const code = data.status;
-      if (code === 400) alert("All inputs are required");
-      else if (code === 401) alert("Invalid Credientials");
-      else if ((code === 200) & (data.message === "Emp Login")) {
-
-        localStorage.setItem("empId", JSON.stringify(data.empId));
-        navigate("/main/EmployeeSection");
-      } else if ((code === 200) & (data.message === "HR Login")) {
-        localStorage.setItem("curuser", JSON.stringify(data.user));
-        localStorage.setItem("empId", JSON.stringify(data.empId));
-
-        navigate("/main2/HR");
+      const response = await axios.post(myurl, userData);
+      const data = response.data;
+      const code = response.status;
+  
+      if (!userData.email) {
+        alert("Please Enter your Email");
+        setLoading(false);
+      } else if (!userData.password) {
+        alert("Please Enter your Password");
+        setLoading(false);
+      } else if (code === 200) {
+        if (data.message === "Emp Login") {
+          localStorage.setItem("empId", JSON.stringify(data.empId));
+          navigate("/main/EmployeeSection");
+        } else if (data.message === "HR Login") {
+          localStorage.setItem("curuser", JSON.stringify(data.user));
+          localStorage.setItem("empId", JSON.stringify(data.empId));
+          navigate("/main2/HR");
+        } else {
+          alert(`${data.message}`);
+          setLoading(false);
+        }
+      } else if (code === 401) {
+        alert("Password didn't match");
+        setLoading(false);
+      } else if (code === 404) {
+        alert("User not registered");
+        setLoading(false);
+      } else {
+        alert("An error occurred");
+        setLoading(false);
       }
     } catch (error) {
       alert(error.message);
+      setLoading(false);
     }
   };
+  
 
   return (
     <ThemeProvider theme={theme}>
@@ -102,12 +122,12 @@ export default function SignIn() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              disabled = {loading}
+              disabled={loading}
             >
-             {loading ? <span className="loader2"></span>
+              {loading ? <span className="loader2"></span>
                 : "Login"}
             </Button>
-           
+
           </Box>
         </Box>
       </Container>
