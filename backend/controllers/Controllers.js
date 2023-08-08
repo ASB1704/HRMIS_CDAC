@@ -10,24 +10,26 @@ export const Login = async (req, res) => {
     if (user) {
       if (password === user.password) {
         if (user.Role.HR === true) {
-          res.status(200).send({
+          res.send({
+            status: 200,
             message: "HR Login",
             empId: user.empId,
           });
         } else {
-          res.status(200).send({
+          res.send({
+            status: 200,
             message: "Emp Login",
             empId: user.empId,
           });
         }
       } else {
-        res.status(401).send({ message: "Password didn't match" });
+        res.send({ message: "Password didn't match" });
       }
     } else {
-      res.status(404).send({ message: "User not registered" });
+      res.send({ message: "User not registered" });
     }
   } catch (err) {
-    console.error(err);
+    console.log(err);
     res.status(500).send("An error occurred");
   }
 };
