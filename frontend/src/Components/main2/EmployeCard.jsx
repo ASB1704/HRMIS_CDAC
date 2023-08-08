@@ -22,8 +22,7 @@ export const EmployeCard = ({ profileUser }) => {
   };
   return (
     <div
-      className="card-wrapper"
-      
+      className="card-wrapper" 
     >
       <div className="img-area">
         <div className="inner-area">

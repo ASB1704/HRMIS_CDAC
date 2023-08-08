@@ -61,18 +61,22 @@
     border-radius: .6rem;
     padding: 1rem;
     height: 80%;
+    width: 90%;
     gap: 1%;
 
 }
 
 .APAR_details-inside {
+    height: auto;
+    width: auto;
+    background-color: #D5F5E8;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 10%;
-    background-color: #D6E3FD;
+    align-items: center;
     border-radius: .5rem;
-    padding: 2%;
+    font-size: 1rem;
+    padding: .4rem;
 
 }
 .details_apar{
@@ -80,17 +84,18 @@
     flex-direction: column;
     height: 62%;
     margin-top: 5%;
-    width: 80%;
-
-    
+    width: 70%;
+    /* border: 2px solid blue; */
 }
 
 .APAR_details-inside-1 {
     font-weight: 600;
+    font-size: .8rem;
     /* color: #04ed90; */
 }
 .APAR_details-inside-12 {
     font-weight: 500;
+    font-size: .7rem;
     /* color: #1d63ef; */
 }
 
@@ -100,9 +105,7 @@
     font-weight: 400;
     gap: 2%;
     margin-bottom: 1%;
-    height: 12%;
-
-    
+    height: 12%;    
 }
 .title_dash{
     display: flex;

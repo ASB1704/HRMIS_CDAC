@@ -34,7 +34,6 @@ export const Login = async (req, res) => {
   }
 };
 
-
 export const updateRequest = async (req, res) => {
   const { email } = req.body;
   try {
