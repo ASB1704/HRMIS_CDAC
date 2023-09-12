@@ -168,7 +168,7 @@ const Grid = ({CurEmp,setCurEmp}) => {
               }`}
             onClick={() => handleMouseclick("3c")}
           >
-            <span> <strong>Potential for Skill Advancement</strong> </span><br />
+            <span> <strong>Less Motivated Individual</strong> </span><br />
             <span>Poor Performance low potential</span>
           </div>
           <div

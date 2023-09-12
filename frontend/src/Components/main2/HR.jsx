@@ -18,9 +18,9 @@ export const HR = () => {
 
   const handle_APAR_issued = () => {
     const APAR_issued = user?.filter((element) => {
-      if (element.quarter.length !== 0) {
+      if (element?.quarter.length !== 0) {
         const appraiselPeriodTo = new Date(
-          element.quarter[element.quarter.length - 1].appraiselPeriodTo
+          element?.quarter[element.quarter.length - 1].appraiselPeriodTo
         );
         const currentDate = new Date();
 
@@ -31,8 +31,8 @@ export const HR = () => {
 
         if (monthDiff < 4) {
           return (
-            element.Role.HR === false &&
-            element.quarter[element.quarter.length - 1].APAR_status === true
+            element?.Role.HR === false &&
+            element?.quarter[element.quarter.length - 1].APAR_status === true
           );
         } else {
           console.log("The difference is greater than 4.");
@@ -44,9 +44,9 @@ export const HR = () => {
 
   const handle_APAR_tobeIssued = () => {
     const APAR_not_initiated = user?.filter((element) => {
-      if (element.quarter.length !== 0) {
+      if (element?.quarter.length !== 0) {
         const appraiselPeriodTo = new Date(
-          element.quarter[element.quarter.length - 1].appraiselPeriodTo
+          element?.quarter[element.quarter.length - 1].appraiselPeriodTo
         );
         const currentDate = new Date();
 
@@ -68,9 +68,9 @@ export const HR = () => {
 
   const handle_Self_Appraisal = () => {
     const Self_Appraisal_filled = user?.filter((element) => {
-      if (element.quarter.length !== 0) {
+      if (element?.quarter.length !== 0) {
         const appraiselPeriodTo = new Date(
-          element.quarter[element.quarter.length - 1].appraiselPeriodTo
+          element?.quarter[element.quarter.length - 1].appraiselPeriodTo
         );
         const currentDate = new Date();
 
@@ -97,7 +97,7 @@ export const HR = () => {
     const APAR_completed = user?.filter(
       (element) =>{
 
-        if (element.quarter.length !== 0) {
+        if (element?.quarter.length !== 0) {
           const appraiselPeriodTo = new Date(
             element.quarter[element.quarter.length - 1].appraiselPeriodTo
           );
@@ -175,7 +175,7 @@ export const HR = () => {
           <div className="HrProfile_up_in">
             <div className="HrProfile_up_in_left">
               <h3>
-                <FaUserEdit /> {curuser.userName}
+                <FaUserEdit /> {curuser?.userName}
               </h3>
               <img
                 src="http://picsum.photos/210

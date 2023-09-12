@@ -224,7 +224,7 @@ function APAR_form() {
                 type="text"
                 placeholder="Name"
                 name="username"
-                value={CurrentUser.userName}
+                value={CurrentUser?.userName}
                 className="inpt"
                 disabled={true}
               ></input>
@@ -239,7 +239,7 @@ function APAR_form() {
                 type="text"
                 placeholder="Employee Id"
                 name="EmployeeID"
-                value={CurrentUser.empId}
+                value={CurrentUser?.empId}
                 className="inpt"
                 disabled={true}
               ></input>
@@ -254,7 +254,7 @@ function APAR_form() {
                 type="text"
                 placeholder="Date of birth"
                 name="dob"
-                value={new Date(CurrentUser.dateOfBirth).toLocaleDateString()}
+                value={new Date(CurrentUser?.dateOfBirth).toLocaleDateString()}
                 className="inpt"
                 disabled={true}
               ></input>
@@ -271,7 +271,7 @@ function APAR_form() {
                 type="text"
                 placeholder="Designation"
                 name="designation"
-                value={user.designation}
+                value={user?.designation}
                 onChange={(e) =>
                   setuser({ ...user, designation: e.target.value })
                 }
@@ -417,7 +417,7 @@ function APAR_form() {
                 placeholder=" DD / MM / YYYY"
                 name="entrydate"
                 value={new Date(
-                  CurrentUser.dateOfEntryInCdac
+                  CurrentUser?.dateOfEntryInCdac
                 ).toLocaleDateString()}
                 className="inpt"
                 disabled={true}

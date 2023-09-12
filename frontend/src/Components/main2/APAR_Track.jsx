@@ -83,7 +83,7 @@ const APAR_Track = ({ data }) => {
                   </tr>
                 ))
               ) : (
-                <tr className="AnEAC-tr">
+                <tr className="AnEAC-td">
                   <td colSpan="6">Loading...</td>
                 </tr>
               )}

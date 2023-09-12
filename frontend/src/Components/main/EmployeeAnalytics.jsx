@@ -65,7 +65,7 @@ export const EmployeeAnalytics = () => {
           </p> */}
           <p>
             <strong>Employee Final Remark :</strong>{" "}
-            {curuser.quarter[index].employeeFinalRemark === "1a" ?"High Achiever" : ""}
+            {curuser.quarter[index].employeeFinalRemark === "1a" ?"High Achiever" :curuser.quarter[index].employeeFinalRemark === "1b"? "Emerging Talent":curuser.quarter[index].employeeFinalRemark === "1c"? "Progressing Performer":curuser.quarter[index].employeeFinalRemark === "2a"? "Capable Trainee":curuser.quarter[index].employeeFinalRemark === "2b"? "Competence Builder":curuser.quarter[index].employeeFinalRemark === "2c"? "Growth-oriented Individual":curuser.quarter[index].employeeFinalRemark === "3a"? "Seasoned Expert":curuser.quarter[index].employeeFinalRemark === "3b"? "Learning Enthusiast":curuser.quarter[index].employeeFinalRemark === "3c"? "Less Motivated Individual":""}
           </p>
           <div className="EAC-extra-details-row-td-21">
             <p>
@@ -128,7 +128,8 @@ export const EmployeeAnalytics = () => {
                                 {user.scoreOfEvaluation.totalScore + user.scoreOfEvaluation.selfAppraisalScore + user.scoreOfEvaluation.achievementBeyondScore }
                               </td>
                               <td className="EAC-td">
-                                {user.employeeFinalRemark}
+                              {curuser.quarter[index].employeeFinalRemark === "1a" ?"High Achiever" :curuser.quarter[index].employeeFinalRemark === "1b"? "Emerging Talent":curuser.quarter[index].employeeFinalRemark === "1c"? "Progressing Performer":curuser.quarter[index].employeeFinalRemark === "2a"? "Capable Trainee":curuser.quarter[index].employeeFinalRemark === "2b"? "Competence Builder":curuser.quarter[index].employeeFinalRemark === "2c"? "Growth-oriented Individual":curuser.quarter[index].employeeFinalRemark === "3a"? "Seasoned Expert":curuser.quarter[index].employeeFinalRemark === "3b"? "Learning Enthusiast":curuser.quarter[index].employeeFinalRemark === "3c"? "Less Motivated Individual":""}
+
                               </td>
                             </tr>
                             {clickedRowIndex === index && (
